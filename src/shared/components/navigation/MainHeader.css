@@ -1,0 +1,16 @@
+.main-header {
+  /* margin-top: 16px; */
+  margin-bottom: 20px;
+  border-bottom: 1px solid #757272;
+}
+
+main {
+  /* margin-top: 5rem; */
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  .main-header {
+    justify-content: space-between;
+  }
+}
