@@ -64,16 +64,23 @@ const Input = props => {
         />
         )
     } else if (props.element === 'radio') {
-        
+        console.log(props.formValue)
         element = (
             <React.Fragment>
                 <input type="radio" 
                     id={props.id}
-                    name={props.name} 
-                    value={props.values[1]}
+                    name={props.id} 
+                    value={props.values[0]}
+                    checked={props.formValue === 'text' ? 'checked' : ''}
                     onChange={changeHandler} 
-                    onBlur={touchHandler} 
-                    /> Email<br />
+                    onBlur={touchHandler} /> Text<br />
+                <input type="radio" 
+                    id={props.id}
+                    name={props.id} 
+                    value={props.values[1]}
+                    checked={props.formValue === 'email' ? 'checked' : ''}
+                    onChange={changeHandler} 
+                    onBlur={touchHandler} /> Email<br />
             </React.Fragment>
         )
     } else {

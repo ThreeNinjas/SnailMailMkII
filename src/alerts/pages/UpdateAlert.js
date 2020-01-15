@@ -13,7 +13,7 @@ const DUMMY_ALERTS = [
     {
         id: '1',
         label: 'Rosy Wolfsnails in Jefferson Parish',
-        emailOrText: 'text',
+        emailOrText: 'email',
         taxa: {
             id: '12345',
             name: 'Euglandina rosea2',
@@ -134,6 +134,7 @@ const UpdateAlert = props => {
             label="How do you want to be notified?"
             id="emailOrText" 
             element="radio" 
+            formValue={formState.inputs.emailOrText.value}
             values={["text", "email"]}
             validators={[VALIDATOR_REQUIRE()]}
             errorText="You must choose text or email."

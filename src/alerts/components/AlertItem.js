@@ -43,6 +43,7 @@ const AlertItem = props => {
                             <h2>{props.label}</h2>
                             <h3> {props.location} </h3>
                             <p>Last seen on {props.lastSeen}</p>
+                            <Button onClick={openEditHandler}>Edit</Button>
                             <Button onClick={openDeleteHandler}>Delete</Button>
                         </div>
                     </Link>
