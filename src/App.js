@@ -4,14 +4,16 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Users from './users/pages/Users'
 import Alerts from './alerts/pages/Alerts'
 import NewAlert from './alerts/pages/NewAlert'
+import UpdateAlert from './alerts/pages/UpdateAlert'
 import MainNavigation from './shared/components/navigation/MainNavigation'
 import Footer from './shared/components/Footer'
+import Auth from './alerts/pages/Auth'
 
 const App = () => {
   return (
     <Router>
     <MainNavigation />
-    <main className="center">
+    <main className="">
       <Switch>
         <Route path="/" exact>
           <NewAlert />
@@ -24,6 +26,12 @@ const App = () => {
         </Route>
         <Route path="/users" exact>
           <Users />
+        </Route>
+        <Route path="/alerts/:alertId">
+          <UpdateAlert />
+        </Route>
+        <Route path="/auth">
+          <Auth></Auth>
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -7,9 +7,10 @@ const DUMMY_ALERTS = [
     {
         id: 1,
         textOrEmail: 'text',
+        label: 'Rosy Wilf Snail in JEfferon Parish',
         taxa: {
             id: 12345,
-            name: 'Euglandina rosea',
+            name: 'Euglandina rosea1',
             photo: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Euglandina_rosea.jpg'
         },
         location: 'Jefferson Parish, LA',

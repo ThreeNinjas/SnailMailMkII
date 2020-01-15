@@ -20,7 +20,7 @@ const AlertsList = props => {
                     id={alert.id}
                     ownerId={alert.ownerId}
                     type={alert.textOrEmail}
-                    taxaId={alert.taxa.id}
+                    label={alert.label}
                     taxaName={alert.taxa.name}
                     taxaPhoto={alert.taxa.photo}
                     location={alert.location}
