@@ -1,15 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
 
 import Card from '../../shared/components/UIElements/Card'
 import Button from '../../shared/components/FormElements/Button'
 import Modal from '../../shared/components/UIElements/Modal'
 import UpdateAlert from '../pages/UpdateAlert'
+import {AuthContext} from '../../shared/context/auth-context'
 
 import './AlertItem.css'
 import Avatar from '../../shared/components/UIElements/Avatar'
 
 const AlertItem = props => {
+    const auth = useContext(AuthContext)
     const [showEdit, setShowEdit] = useState(false)
 
     const openEditHandler = () => { setShowEdit(true) }
@@ -37,14 +39,17 @@ const AlertItem = props => {
                 <Card className="alert-item__content">
                     <Link to={`/${props.ownerId}/alerts`}>
                         <div className="alert-item__image">
-                            <Avatar image={props.taxaPhoto} alt={props.taxaName} />
+                            {props.taxaPhoto != '' &&<Avatar image={props.taxaPhoto} alt={props.taxaName} />}
                         </div>
                         <div className="alert-item__info">
                             <h2>{props.label}</h2>
                             <h3> {props.location} </h3>
-                            <p>Last seen on {props.lastSeen}</p>
-                            <Button onClick={openEditHandler}>Edit</Button>
-                            <Button onClick={openDeleteHandler}>Delete</Button>
+                            {props.lastSeen != '' && <p>Last seen on {props.lastSeen}</p>}
+                            {props.lastSeen === '' && <p>No observations yet</p>}
+                            {auth.isLoggedIn && 
+                            <Button onClick={openEditHandler}>Edit</Button>}
+                            {auth.isLoggedIn &&
+                            <Button onClick={openDeleteHandler}>Delete</Button>}
                         </div>
                     </Link>
                 </Card>

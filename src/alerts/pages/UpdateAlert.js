@@ -13,7 +13,7 @@ const DUMMY_ALERTS = [
     {
         id: '1',
         label: 'Rosy Wolfsnails in Jefferson Parish',
-        emailOrText: 'email',
+        emailOrText: 'text',
         taxa: {
             id: '12345',
             name: 'Euglandina rosea2',

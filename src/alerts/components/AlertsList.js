@@ -16,15 +16,15 @@ const AlertsList = props => {
         <ul className="alerts-list">
             {props.items.map(alert => (
                 <AlertItem
-                    key={alert.id}
-                    id={alert.id}
-                    ownerId={alert.ownerId}
-                    type={alert.textOrEmail}
+                    key={alert._id}
+                    id={alert.__id}
+                    ownerId={alert.owner}
+                    /* type={alert.textOrEmail} */
                     label={alert.label}
-                    taxaName={alert.taxa.name}
-                    taxaPhoto={alert.taxa.photo}
-                    location={alert.location}
-                    lastSeen={alert.lastSeen}
+                    /* taxaName={alert.taxa.name} */
+                    taxaPhoto={alert.lastObservation ? alert.lastObservation.photo : ''}
+                    /* location={alert.location} */
+                    lastSeen={alert.lastObservation ? alert.lastObservation.observed_on : ''}
                 />
             ))}
         </ul>

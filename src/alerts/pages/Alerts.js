@@ -1,54 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
 import AlertsList from '../components/AlertsList'
-
-const DUMMY_ALERTS = [
-    {
-        id: 1,
-        textOrEmail: 'text',
-        label: 'Rosy Wilf Snail in JEfferon Parish',
-        taxa: {
-            id: 12345,
-            name: 'Euglandina rosea1',
-            photo: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Euglandina_rosea.jpg'
-        },
-        location: 'Jefferson Parish, LA',
-        lastSeen: 'Sep. 21, 2019',
-        ownerId: 'u1'
-    },
-    {
-        id: 2,
-        textOrEmail: 'email',
-        taxa: {
-            id: 67890,
-            name: 'Tursiops truncatus',
-            photo: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Tursiops_truncatus_01-cropped.jpg'
-        },
-        location: 'Grand Isle, LA',
-        lastSeen: 'Sep. 21, 2019',
-        ownerId: 'u2'
-    },
-    {
-        id: 2,
-        textOrEmail: 'email',
-        taxa: {
-            id: 67890,
-            name: 'Oxalis gigantea',
-            photo: 'https://worldofsucculents.com/wp-content/uploads/2016/08/Oxalis-gigantea3.jpg'
-        },
-        location: 'Chile',
-        lastSeen: 'Sep. 21, 2019',
-        ownerId: 'u2'
-    }
-]
+import ErrorModal from '../../shared/components/UIElements/ErrorModal'
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner'
+import { useHttpClient } from '../../shared/hooks/http-hook'
+import { AuthContext } from '../../shared/context/auth-context'
 
 const Alerts = () => {
+    const auth = useContext(AuthContext)
+    const [loadedAlerts, setLoadedAlerts] = useState()
+    const {isLoading, error, sendRequest, clearError} = useHttpClient()
+
     const userId = useParams().userId
-    const loadedAlerts = DUMMY_ALERTS.filter(alert => alert.ownerId === userId)
-    
+
+    useEffect(() => {
+        const fetchAlerts = async () => {
+            try {
+                const responseData = await sendRequest(`http://localhost:5000/alerts/${userId}`) //http://localhost:5000/alerts/5e7abdf76c1b7845b8eef0e0
+                
+                setLoadedAlerts(responseData)
+            } catch (e) {
+                
+            }
+        }
+        fetchAlerts()
+    }, [sendRequest])
+    console.log('Peach')
+    console.log(loadedAlerts)
     return (
-        <AlertsList items={loadedAlerts} />
+        <React.Fragment>
+            <ErrorModal error={error} onClear={clearError} />
+            {isLoading && <div className="center">
+                <LoadingSpinner />
+            </div>}
+            {!isLoading && loadedAlerts && <AlertsList items={loadedAlerts} />}
+        </React.Fragment>
         )
 }
 
