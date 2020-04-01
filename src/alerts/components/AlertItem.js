@@ -21,6 +21,7 @@ const AlertItem = props => {
 
     const openDeleteHandler = () => { setshowDelete(true) }
     const closeDeleteHandler = () => { setshowDelete(false) }
+    
     return (
         <React.Fragment>
             <Modal 
@@ -32,12 +33,12 @@ const AlertItem = props => {
             footer={<Button onClick={closeEditHandler}>Close</Button>}
             >
                 <div className="map-containter">
-                    <UpdateAlert alertId="1" />
+                    <UpdateAlert alertId={props.id} />
                 </div>
             </Modal>
             <li className="alert-item">
                 <Card className="alert-item__content">
-                    <Link to={`/${props.ownerId}/alerts`}>
+                    <Link to={`/${props.id}/alerts`}>
                         <div className="alert-item__image">
                             {props.taxaPhoto != '' &&<Avatar image={props.taxaPhoto} alt={props.taxaName} />}
                         </div>

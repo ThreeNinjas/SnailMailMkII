@@ -26,8 +26,7 @@ const Alerts = () => {
         }
         fetchAlerts()
     }, [sendRequest])
-    console.log('Peach')
-    console.log(loadedAlerts)
+
     return (
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />

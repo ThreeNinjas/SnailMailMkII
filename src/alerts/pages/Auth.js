@@ -58,8 +58,6 @@ const Auth = props => {
             }), {
                 'Content-Type': 'application/json'
             })
-            console.log('Auth.js -> authSubmitHandler')
-            console.log(responseData.token)
             auth.login(responseData.user._id, responseData.token)
             } catch (e) {
                 
@@ -74,7 +72,6 @@ const Auth = props => {
                 }), {
                     'Content-Type': 'application/json'
                 })
-                console.log(responseData)
                 auth.login(responseData.user._id)
             } catch (e) {
                

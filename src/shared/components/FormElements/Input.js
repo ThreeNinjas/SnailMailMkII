@@ -80,7 +80,7 @@ const Input = props => {
                     name={props.id} 
                     value={props.values[1]}
                     /* value = {inputState.value} */
-                    checked={props.formValue === 'email' ? 'checked' : ''}
+                    checked={props.formValue === 'email' ? 'checked' : ''} //maybe this needs to be turned off for adding a new alert
                     onChange={changeHandler} 
                     onBlur={touchHandler} /> Email<br />
             </React.Fragment>

@@ -4,7 +4,7 @@ import './AlertsList.css'
 import AlertItem from './AlertItem'
 
 const AlertsList = props => {
-    if (props.items.lenth === 0) {
+    if (props.items.length === 0) {
         return (
             <div className="center">
                 <h2>No alerts found.</h2>
@@ -17,7 +17,7 @@ const AlertsList = props => {
             {props.items.map(alert => (
                 <AlertItem
                     key={alert._id}
-                    id={alert.__id}
+                    id={alert._id}
                     ownerId={alert.owner}
                     /* type={alert.textOrEmail} */
                     label={alert.label}
